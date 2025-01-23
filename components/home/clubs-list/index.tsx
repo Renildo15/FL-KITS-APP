@@ -8,7 +8,7 @@ export default function ClubsList() {
         <View style={{width: '100%'}}>
             <FlatList
                 data={home}
-                renderItem={({item}) => <CardNormal name={item.name} federation={item.federation}/>}
+                renderItem={({item}) => <CardNormal id={item.id} name={item.name} federation={item.federation}/>}
                 keyExtractor={item => item.id}
                 contentContainerStyle={{ paddingBottom: 70 }}
             />
