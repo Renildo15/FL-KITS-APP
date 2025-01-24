@@ -4,7 +4,11 @@ import { home } from "@/data/home";
 import CardContent from "../card-content";
 import { styles } from "../styles";
 
-export default function CardMain() {
+interface ICardMainProps {
+    isClickable: boolean;
+}
+
+export default function CardMain({isClickable}: ICardMainProps) {
     return (
         <View style={{width: '100%', borderBottomWidth: 1, borderBottomColor: '#ccc'}}>
             <View style={styles.container_image}>
@@ -19,7 +23,7 @@ export default function CardMain() {
             <CardContent 
                 name={home[0].name} 
                 federation={home[0].federation}
-                isClickable={true}
+                isClickable={isClickable}
             />
         </View>
     )
