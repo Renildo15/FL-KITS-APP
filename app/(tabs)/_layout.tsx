@@ -66,6 +66,34 @@ export default function TabLayout() {
         options={{
           title: 'Add Kits',
           tabBarIcon: ({ color }) => <TabBarIcon name="plus-circle" color={color} />,
+          headerRight: () => (
+            <View style={{ flexDirection: 'row' }}>
+              <Link href="/modal" asChild>
+                <Pressable>
+                  {({ pressed }) => (
+                    <FontAwesome
+                      name="search"
+                      size={25}
+                      color={'#A31C1C'}
+                      style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                    />
+                  )}
+                </Pressable>
+              </Link>
+              <Link href="/modal" asChild>
+                <Pressable>
+                  {({ pressed }) => (
+                    <FontAwesome
+                      name="gear"
+                      size={25}
+                      color={'#A31C1C'}
+                      style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                    />
+                  )}
+                </Pressable>
+              </Link>
+            </View>
+          ),
         }}
       />
     </Tabs>
