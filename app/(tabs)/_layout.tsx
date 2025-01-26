@@ -62,7 +62,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="add-kits"
+        name="(kits)"
         options={{
           title: 'Add Kits',
           tabBarIcon: ({ color }) => <TabBarIcon name="plus-circle" color={color} />,
