@@ -12,6 +12,7 @@ export const kits = {
             "kit_goalkeeper_away_url": "https://i.imgur.com/ABDubKI.png",
             "kit_current": true,
             "kit_type": "fts",
+            "kit_version": "1.0.0"
         },
 
     ]

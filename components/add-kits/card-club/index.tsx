@@ -2,6 +2,7 @@ import Emblem from "@/components/emblem";
 import { View, Text } from "@/components/Themed";
 import { TouchableOpacity } from "react-native";
 import { styles } from "../styles";
+import { router } from "expo-router";
 
 interface CardClubProps {
     name: string;
@@ -13,7 +14,7 @@ interface CardClubProps {
 export default function CardClub({name, emblem, federation, kits}: CardClubProps) {
     return(
         <TouchableOpacity
-            onPress={() => console.log('Abrir detalhes do clube')}
+            onPress={() => router.push("/(tabs)/(kits)/club-kits")}
             style={styles.card_club}
         >
             <Emblem
