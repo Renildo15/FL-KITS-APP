@@ -5,6 +5,7 @@ import Emblem from "@/components/emblem";
 import { TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { styles } from "../styles";
+import { router } from "expo-router";
 
 export default function ClubKitsList() {
     return(
@@ -29,6 +30,7 @@ export default function ClubKitsList() {
            <View style={{width:"100%", padding:10}}>
                 <TouchableOpacity
                     style={styles.add_kit_button}
+                    onPress={() => router.push("/(tabs)/(kits)/add-kit")}
                 >
                     <FontAwesome color="white" name="plus" size={24}/>
                     <Text style={{color:"white"}}>Novo Kit</Text>

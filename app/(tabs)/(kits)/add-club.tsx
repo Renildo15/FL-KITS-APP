@@ -1,12 +1,10 @@
 import { View, Text } from "@/components/Themed";
-import { FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
-import { TouchableOpacity, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import ClubInput from "@/components/add-kits/add-club/club-input";
 import ClubEmblemInput from "@/components/add-kits/add-club/club-emblem-input";
 import ClubEmblem from "@/components/add-kits/add-club/club-emblem";
-import AddClubButton from "@/components/add-kits/add-club/add-club-button";
+import AddButton from "@/components/add-kits/add-club/add-club-button";
 
 export default function AddClub() {
     const [image, setImage] = useState<string>('');
@@ -37,7 +35,7 @@ export default function AddClub() {
             </View>
             <ClubInput/>
             {image ? <ClubEmblem uri={image}/> : <ClubEmblemInput pickImage={pickImage}/>}
-           <AddClubButton/>
+           <AddButton title="Adicionar clube"/>
         </View>
     )
 }
