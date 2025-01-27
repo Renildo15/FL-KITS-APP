@@ -74,5 +74,21 @@ export const styles = StyleSheet.create({
         width: "75%",
         alignItems: "center",
         backgroundColor:"#f0f0f0",
-    }
+    },
+    closeButton: {
+        position: "absolute",
+        top: 8,
+        right: 8,
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        borderRadius: 12,
+        width: 24,
+        height: 24,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    closeButtonText: {
+        color: "white",
+        fontSize: 14,
+        fontWeight: "bold",
+    },
 });
