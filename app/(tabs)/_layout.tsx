@@ -33,7 +33,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <View style={{ flexDirection: 'row' }}>
-              <Link href="/modal" asChild>
+              <Link href="/search" asChild>
                 <Pressable>
                   {({ pressed }) => (
                     <FontAwesome
@@ -45,7 +45,7 @@ export default function TabLayout() {
                   )}
                 </Pressable>
               </Link>
-              <Link href="/modal" asChild>
+              <Link href="/settings" asChild>
                 <Pressable>
                   {({ pressed }) => (
                     <FontAwesome
@@ -68,7 +68,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="plus-circle" color={color} />,
           headerRight: () => (
             <View style={{ flexDirection: 'row' }}>
-              <Link href="/modal" asChild>
+              <Link href="/search" asChild>
                 <Pressable>
                   {({ pressed }) => (
                     <FontAwesome
@@ -80,7 +80,7 @@ export default function TabLayout() {
                   )}
                 </Pressable>
               </Link>
-              <Link href="/modal" asChild>
+              <Link href="/settings" asChild>
                 <Pressable>
                   {({ pressed }) => (
                     <FontAwesome

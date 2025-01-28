@@ -54,7 +54,8 @@ function RootLayoutNav() {
       <StatusBar style="auto" />
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="search" options={{ presentation: 'modal', title:"Busca" }} />
+        <Stack.Screen name="settings" options={{ presentation: 'modal', title:"Configurações"}} />
       </Stack>
     </ThemeProvider>
   );
