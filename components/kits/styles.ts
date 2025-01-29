@@ -6,13 +6,14 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%'
+        width: '100%',
     },
     emblem_content: {
         alignItems: 'center',
         borderWidth: 1, 
         borderColor: 'white', 
         padding: 10,
+        width: "80%"
     },
     input: {
         height: 40,

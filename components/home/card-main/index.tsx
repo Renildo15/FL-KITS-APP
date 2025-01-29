@@ -1,28 +1,29 @@
 import { View } from "@/components/Themed";
 import { Image} from "react-native";
-import { home } from "@/data/home";
 import CardContent from "../card-content";
 import { styles } from "../styles";
+import { Club } from "@/types/clubs";
 
 interface ICardMainProps {
     isClickable: boolean;
+    club: Club | null
 }
 
-export default function CardMain({isClickable}: ICardMainProps) {
+export default function CardMain({isClickable, club}: ICardMainProps) {
     return (
         <View style={{width: '100%', borderBottomWidth: 1, borderBottomColor: '#ccc'}}>
             <View style={styles.container_image}>
                 <Image
                     style={styles.tinyLogo}
                     source={{
-                        uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/71/Celtic_FC_crest.svg/1200px-Celtic_FC_crest.svg.png',
+                        uri: club?.emblem_versions.original,
                     }}
                     resizeMode="cover"
                 />
             </View>
             <CardContent 
-                name={home[0].name} 
-                federation={home[0].federation}
+                name={club?.name} 
+                federation={club?.federation}
                 isClickable={isClickable}
             />
         </View>

@@ -3,8 +3,8 @@ import { TouchableOpacity } from "react-native";
 import { styles } from "../styles";
 
 interface ITeamProps {
-    name: string;
-    federation: string;
+    name: string | undefined;
+    federation: string | undefined;
     isClickable?: boolean;
 }
 
