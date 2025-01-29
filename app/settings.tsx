@@ -1,16 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
-
-import { Text, View } from '@/components/Themed';
+import {  StyleSheet  } from 'react-native';
+import {  View } from '@/components/Themed';
+import SettingsButton from '@/components/settings/settings-button';
 
 export default function Settings() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <View style={{width:"100%", padding:10}}>
+          <SettingsButton icon='sun-o' isThemed={true} text={"Tema"} />
+          <SettingsButton icon='info' isThemed={false} text={"Sobre o App"} />
+          <SettingsButton icon='group' isThemed={false} text={"Créditos"} />
+      </View>
     </View>
   );
 }
@@ -19,15 +18,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    justifyContent: 'flex-start',
   },
 });
