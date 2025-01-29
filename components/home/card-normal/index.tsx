@@ -9,9 +9,10 @@ interface ICardNormalProps {
     id: string;
     name: string;
     federation: string;
+    uri: string;
 }
 
-export default function CardNormal( {name, federation, id}: ICardNormalProps ) {
+export default function CardNormal( {name, federation, id, uri}: ICardNormalProps ) {
     const router = useRouter();
     return (
         <TouchableOpacity 
@@ -20,7 +21,7 @@ export default function CardNormal( {name, federation, id}: ICardNormalProps ) {
         >
             <CardContent name={name} federation={federation}/>
             <Emblem
-                uri='https://upload.wikimedia.org/wikipedia/en/thumb/7/71/Celtic_FC_crest.svg/1200px-Celtic_FC_crest.svg.png'
+                uri={uri}
                 width={80}
                 height={80}
             />
