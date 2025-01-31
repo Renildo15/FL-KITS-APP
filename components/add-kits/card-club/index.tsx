@@ -3,12 +3,13 @@ import { View, Text } from "@/components/Themed";
 import { TouchableOpacity } from "react-native";
 import { styles } from "../styles";
 import { router } from "expo-router";
+import { Kit } from "@/types/kits";
 
 interface CardClubProps {
     name: string;
     emblem: string;
     federation: string;
-    kits: string[];
+    kits: Kit[];
 }
 
 export default function CardClub({name, emblem, federation, kits}: CardClubProps) {
