@@ -1,9 +1,13 @@
 import { View, Text } from "@/components/Themed";
-import { useState } from "react";
 import { TextInput } from "react-native";
 import { styles } from "../styles";
-export default function ClubInput() {
-    const [name, setName] = useState('');
+
+interface IClubInputProps {
+    name: string;
+    setName: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function ClubInput({ name, setName}: IClubInputProps) {
     return (
         <View style={{width: '100%'}}>
             <Text
@@ -13,7 +17,7 @@ export default function ClubInput() {
             </Text>
             <TextInput
                 style={styles.name_input}
-                onChangeText={setName}
+                onChangeText={(text) => setName(text)}
                 value={name}
                 placeholder="Nome do clube"
                 

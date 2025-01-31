@@ -2,9 +2,13 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "../Themed"
 import { useState } from "react";
 
-export default function RadioButton() {
+interface IRadioButtonProps {
+    kitType: string;
+    setKitType: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function RadioButton({kitType, setKitType}: IRadioButtonProps) {
     const kitTypes = ["FTS", "FL"];
-    const [kitType, setKitType] = useState('')
     return(
         <View style={{width:"100%", paddingVertical:10}}>
             <View style={styles.wrapper}>
