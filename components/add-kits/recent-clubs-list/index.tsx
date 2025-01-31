@@ -5,24 +5,31 @@ import { styles } from "../styles";
 import { useRecentsClubs } from "@/hooks/useRecentsClubs";
 
 export default function RecentClubsList() {
-    const {result} = useRecentsClubs();
+    const {result, isError, isLoading} = useRecentsClubs();
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Clubes recentes</Text>
-            <FlatList
-                style={{width: "100%"}}
-                data={result.results}
-                renderItem={({item}) => (
-                    <CardClub
-                        name={item.name}
-                        emblem={item.emblem_versions.original}
-                        federation={"FCH"}
-                        kits={item.kits}
-                    />
-                )}
-                keyExtractor={item => item.id}
-                ItemSeparatorComponent={() => <View style={styles.separator} />}
-            />
+            { isError ? (
+                <Text>Error</Text>
+            ): isLoading ? (
+                <Text>Carregando</Text>
+            ) : (
+                <FlatList
+                    style={{width: "100%"}}
+                    data={result.results}
+                    renderItem={({item}) => (
+                        <CardClub
+                            id={item.id}
+                            name={item.name}
+                            emblem={item.emblem_versions.original}
+                            federation={"FCH"}
+                            kits={item.kits}
+                        />
+                    )}
+                    keyExtractor={item => item.id}
+                    ItemSeparatorComponent={() => <View style={styles.separator} />}
+                />
+            )}
         </View>
     )
 }

@@ -1,32 +1,49 @@
 import { View, Text } from "@/components/Themed";
 import CardAllKits from "../card-all-kits";
-import { kits } from "@/data/kits";
 import Emblem from "@/components/emblem";
 import { TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { styles } from "../styles";
 import { router } from "expo-router";
+import { useClubDetail } from "@/hooks/useClub";
 
-export default function ClubKitsList() {
+interface IClubKitsListProps {
+    uuid: string
+}
+
+export default function ClubKitsList({ uuid }: IClubKitsListProps) {
+    const { club, isError, isLoading } = useClubDetail(uuid)
+
+    if (isLoading) {
+        return <Text style={{ padding: 30 }}>Carregando kits...</Text>;
+    }
+
+    if (isError) {
+        return <Text style={{ padding: 30, color: "red" }}>Erro ao carregar os kits.</Text>;
+    }
     return(
         <View style={{alignItems:"center", width:"100%"}}>
             <Emblem
                 height={200}
                 width={200}
-                uri={kits.emblem}
+                uri={club?.emblem_versions.original ?? ""}
             />
-            {kits.kits.map((kit, index) => (
-                <View key={index}>
-                    <CardAllKits
-                        kit_version={kit.kit_version}
-                        kit_type={kit.kit_type}
-                        home_kit={kit.kit_home_url}
-                        away_kit={kit.kit_away_url}
-                        goalkeeper_away_kit={kit.kit_goalkeeper_away_url}
-                        goalkeeper_home_kit={kit.kit_goalkeeper_home_url}
-                    />
-                </View>
-            ))}
+            {club?.kits && club.kits.length > 0 ? (
+                club.kits.map((kit, index) => (
+                    <View key={index}>
+                        <CardAllKits
+                            kit_version={kit.kit_version}
+                            kit_type={kit.kit_type}
+                            home_kit={kit.kit_home_url}
+                            away_kit={kit.kit_away_url}
+                            goalkeeper_away_kit={kit.kit_goalkeeper_away_url}
+                            goalkeeper_home_kit={kit.kit_goalkeeper_home_url}
+                        />
+                    </View>
+                ))
+            ) : (
+                <Text style={{padding:30}}>Nenhum kit disponível</Text>
+            )}
            <View style={{width:"100%", padding:10}}>
                 <TouchableOpacity
                     style={styles.add_kit_button}

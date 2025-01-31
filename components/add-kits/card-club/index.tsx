@@ -6,16 +6,17 @@ import { router } from "expo-router";
 import { Kit } from "@/types/kits";
 
 interface CardClubProps {
+    id: string;
     name: string;
     emblem: string;
     federation: string;
     kits: Kit[];
 }
 
-export default function CardClub({name, emblem, federation, kits}: CardClubProps) {
+export default function CardClub({id,name, emblem, federation, kits}: CardClubProps) {
     return(
         <TouchableOpacity
-            onPress={() => router.push("/(tabs)/(kits)/club-kits")}
+            onPress={() => router.push(`/(tabs)/(kits)/${id}/club-kits`)}
             style={styles.card_club}
         >
             <Emblem
