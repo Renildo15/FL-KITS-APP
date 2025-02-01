@@ -1,11 +1,21 @@
 import { View, Text } from "@/components/Themed";
-import { FlatList } from "react-native";
+import { FlatList, RefreshControl } from "react-native";
 import CardClub from "../card-club";
 import { styles } from "../styles";
 import { useRecentsClubs } from "@/hooks/useRecentsClubs";
+import { useState } from "react";
 
 export default function RecentClubsList() {
-    const {result, isError, isLoading} = useRecentsClubs();
+    const { resultRecentClubs, refetchRecentClubs, isError, isLoading} = useRecentsClubs();
+
+    const [refreshing, setRefreshing] = useState(false);
+    
+    const onRefresh = async () => {
+        setRefreshing(true);
+        await refetchRecentClubs();
+        setRefreshing(false);
+    };
+
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Clubes recentes</Text>
@@ -16,7 +26,7 @@ export default function RecentClubsList() {
             ) : (
                 <FlatList
                     style={{width: "100%"}}
-                    data={result.results}
+                    data={resultRecentClubs.results}
                     renderItem={({item}) => (
                         <CardClub
                             id={item.id}
@@ -28,6 +38,13 @@ export default function RecentClubsList() {
                     )}
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={() => <View style={styles.separator} />}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                            colors={['#007bff']}
+                        />
+                    }
                 />
             )}
         </View>

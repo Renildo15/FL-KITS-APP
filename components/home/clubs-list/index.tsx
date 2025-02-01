@@ -1,7 +1,6 @@
 import { FlatList, RefreshControl } from "react-native";
 import CardNormal from "../card-normal";
 import { Text, View } from "@/components/Themed";
-import { home } from "@/data/home";
 import { UseClubs } from "@/hooks/useClubs";
 import { useState } from "react";
 
@@ -22,7 +21,7 @@ export default function ClubsList() {
       };
     
     return (
-        <View style={{width: '100%'}}>
+        <View style={{flex: 1}}>
             { isError ? (
                 <Text>{isError.message}</Text>
             ) : isLoading ? (

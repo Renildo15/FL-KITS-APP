@@ -3,12 +3,14 @@ import CardMain from '@/components/home/card-main';
 import ClubsList from '@/components/home/clubs-list';
 import { styles } from './styles';
 import { UseClubs } from '@/hooks/useClubs';
+import { useRecentsClubs } from '@/hooks/useRecentsClubs';
 
 export default function Home() {
 
   const { result, isError, isLoading} = UseClubs();
+  const {resultRecentClubs} = useRecentsClubs();
 
-  const firstClub = result.results.length > 0 ? result.results[0] : null;
+  const firstClub = resultRecentClubs.results.length > 0 ? result.results[0] : null;
 
   return (
     <View style={styles.container}>
