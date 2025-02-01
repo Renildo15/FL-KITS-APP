@@ -1,5 +1,5 @@
 export interface IClubErrors { 
     name?: string; 
-    kitType?: string; 
+    federation?: string; 
     image?: string 
 }
