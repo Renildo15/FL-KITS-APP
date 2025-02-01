@@ -1,25 +1,24 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "../Themed"
-import { useState } from "react";
 
 interface IRadioButtonProps {
-    kitType: string;
-    setKitType: React.Dispatch<React.SetStateAction<string>>;
+    federation: string;
+    setFederation: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function RadioButton({kitType, setKitType}: IRadioButtonProps) {
-    const kitTypes = ["FTS", "FL"];
+export default function RadioButton({federation, setFederation}: IRadioButtonProps) {
+    const federations = ["FCH", "FCR", "FCM"];
     return(
         <View style={{width:"100%", paddingVertical:10}}>
             <View style={styles.wrapper}>
-                { kitTypes.map(type => (
+                { federations.map(type => (
                     <View key={type} style={styles.type}>
                         <Text style={styles.option}>{type}</Text>
                         <TouchableOpacity
-                            onPress={() => setKitType(type)}
+                            onPress={() => setFederation(type)}
                             style={styles.outter}
                         >
-                            { kitType === type && <View style={styles.inner}/>}
+                            { federation === type && <View style={styles.inner}/>}
                         </TouchableOpacity>
                     </View>
                 ))}
@@ -50,13 +49,12 @@ const styles = StyleSheet.create({
         gap:10
     },
     type: {
-
+        width: "22%",
         alignItems: "center",
         flexDirection:"row",
-        gap:10
+        gap: 5
     },
     option: {
         fontSize: 16,
-        textTransform: 'capitalize'
     }
 })
