@@ -31,8 +31,6 @@ export default function AddClub() {
             quality: 1
         })
 
-        console.log(result);
-
         if (!result.canceled) {
             setImage(result.assets[0].uri);
         }
@@ -67,10 +65,13 @@ export default function AddClub() {
 
         const response = await fetch(image)
         const blob = await response.blob();
+
+        const imageName = name.replace(" ", "_").toLowerCase();
+
         //@ts-ignore
         data.append("emblem",{
             uri: image,
-            name: 'emblem.png',
+            name: `${imageName}.png`,
             type: blob.type,
          })
 
@@ -91,7 +92,6 @@ export default function AddClub() {
         }
     }
 
-    console.log(Object.keys(errors).length)
     return (
         <ScrollView 
             contentContainerStyle={{ backgroundColor:"white", flexGrow: 1,justifyContent: 'flex-start', alignItems: 'center', padding: 20, width: '100%'}}
