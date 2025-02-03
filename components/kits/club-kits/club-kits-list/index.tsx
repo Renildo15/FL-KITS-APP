@@ -12,7 +12,7 @@ interface IClubKitsListProps {
 }
 
 export default function ClubKitsList({ uuid }: IClubKitsListProps) {
-    const { club, isError, isLoading } = useClubDetail(uuid)
+    const { club, isError, isLoading } = useClubDetail(uuid, true)
 
     if (isLoading) {
         return <Text style={{ padding: 30 }}>Carregando kits...</Text>;
@@ -21,6 +21,7 @@ export default function ClubKitsList({ uuid }: IClubKitsListProps) {
     if (isError) {
         return <Text style={{ padding: 30, color: "red" }}>Erro ao carregar os kits.</Text>;
     }
+
     return(
         <View style={{alignItems:"center", width:"100%"}}>
             <Emblem
@@ -47,7 +48,7 @@ export default function ClubKitsList({ uuid }: IClubKitsListProps) {
            <View style={{width:"100%", padding:10}}>
                 <TouchableOpacity
                     style={styles.add_kit_button}
-                    onPress={() => router.push("/(tabs)/(kits)/add-kit")}
+                    onPress={() => router.push(`/(tabs)/(kits)/${uuid}/add-kit`)}
                 >
                     <FontAwesome color="white" name="plus" size={24}/>
                     <Text style={{color:"white"}}>Novo Kit</Text>
