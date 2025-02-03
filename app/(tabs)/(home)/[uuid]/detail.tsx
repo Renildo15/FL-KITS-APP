@@ -14,7 +14,7 @@ export default function Detail() {
         club,
         isError,
         isLoading
-    } = useClubDetail(uuid as string)
+    } = useClubDetail(uuid as string, false)
 
     return (
         <ScrollView 
