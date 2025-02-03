@@ -10,3 +10,21 @@ export type Kit = {
     created_at: string;
     updated_at: string;
 }
+
+export enum KitType {
+    FTS = "fts",
+    FL = "fl",
+    DLS = "dls",
+    Other = "other",
+}
+
+export type KitCreate = {
+    club: string;
+    kit_home: string;
+    kit_away: string;
+    kit_goalkeeper_home: string;
+    kit_goalkeeper_away: string;
+    kit_version: string;
+    kit_current: string;
+    kit_type: KitType;
+}
