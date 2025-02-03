@@ -11,6 +11,7 @@ import { IClubErrors } from "@/types/club-errors";
 import { addClub } from "@/hooks/useAddClub";
 import { UseClubs } from "@/hooks/useClubs";
 import { useRecentsClubs } from "@/hooks/useRecentsClubs";
+import { federations } from "@/utils";
 
 
 export default function AddClub() {
@@ -110,8 +111,9 @@ export default function AddClub() {
             />
             {errors.name && <Text style={{ color: "red" }}>{errors.name}</Text>}
             <RadioButton
-                federation={federation}
-                setFederation={setFederation}
+                option={federation}
+                setOption={setFederation}
+                list={federations}
             />
             {errors.federation && <Text style={{ color: "red" }}>{errors.federation}</Text>}
             {image ? <ClubEmblem uri={image}/> : <ClubEmblemInput pickImage={pickImage}/>}

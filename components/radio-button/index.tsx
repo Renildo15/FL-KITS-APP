@@ -2,23 +2,23 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "../Themed"
 
 interface IRadioButtonProps {
-    federation: string;
-    setFederation: React.Dispatch<React.SetStateAction<string>>;
+    option: string;
+    setOption: React.Dispatch<React.SetStateAction<any>>;
+    list: string[]
 }
 
-export default function RadioButton({federation, setFederation}: IRadioButtonProps) {
-    const federations = ["FCH", "FCR", "FCM"];
+export default function RadioButton({option, setOption, list}: IRadioButtonProps) {
     return(
         <View style={{width:"100%", paddingVertical:10}}>
             <View style={styles.wrapper}>
-                { federations.map(type => (
+                { list.map(type => (
                     <View key={type} style={styles.type}>
-                        <Text style={styles.option}>{type}</Text>
+                        <Text style={styles.option}>{type.toUpperCase()}</Text>
                         <TouchableOpacity
-                            onPress={() => setFederation(type)}
+                            onPress={() => setOption(type)}
                             style={styles.outter}
                         >
-                            { federation === type && <View style={styles.inner}/>}
+                            { option === type && <View style={styles.inner}/>}
                         </TouchableOpacity>
                     </View>
                 ))}

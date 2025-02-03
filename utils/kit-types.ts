@@ -1,0 +1,1 @@
+export const kTypes = ["fts", "fl", "dls", "other"]

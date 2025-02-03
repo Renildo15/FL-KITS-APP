@@ -1,7 +1,5 @@
 import { api } from "@/services/api";
-import { CreateClub, Result, Club } from "@/types/clubs";
 import axios from "axios";
-import { mutate } from "swr";
 
 export async function addClub(newClub: FormData) {
     interface IResponse {
