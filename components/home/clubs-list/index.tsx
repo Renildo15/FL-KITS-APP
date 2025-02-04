@@ -4,13 +4,18 @@ import { Text, View } from "@/components/Themed";
 import { useClubs } from "@/hooks/useClubs";
 import { useState } from "react";
 
-export default function ClubsList() {
+
+interface IClubListProps{
+    searchTerm?: string
+}
+
+export default function ClubsList({searchTerm}:IClubListProps) {
     const {
         result,
         isError,
         isLoading,
         refetch
-    } = useClubs();
+    } = useClubs(searchTerm ?? undefined);
 
     const [refreshing, setRefreshing] = useState(false);
 
@@ -32,6 +37,7 @@ export default function ClubsList() {
                     renderItem={({item}) => <CardNormal id={item.id} name={item.name} federation={item.federation} uri={item.emblem_versions.original}/>}
                     keyExtractor={item => item.id}
                     contentContainerStyle={{ paddingBottom: 70 }}
+                    showsVerticalScrollIndicator={false}
                     refreshControl={
                         <RefreshControl
                           refreshing={refreshing}

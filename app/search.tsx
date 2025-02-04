@@ -1,17 +1,23 @@
 import { StyleSheet } from 'react-native';
 
-import { View } from '@/components/Themed';
+import { View, Text } from '@/components/Themed';
 import SearchInput from '@/components/search/search-input';
 import Filter from '@/components/search/filter';
+import ClubsList from '@/components/home/clubs-list';
+import { useState } from 'react';
 
 export default function Search() {
-
+  const [term, setTerm] = useState("")
   return (
     <View style={styles.container}>
-       <View style={{width:"100%", padding:10}}>
-          <SearchInput/>
-          <Filter/>
-       </View>
+      <View style={{ width: "100%", padding: 10, flex: 1 }}>
+        <SearchInput 
+          searchTerm={term}
+          setSearchTerm={setTerm}
+        />
+        <Filter />
+        <ClubsList searchTerm={term} />
+      </View>
     </View>
   );
 }
@@ -19,8 +25,8 @@ export default function Search() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'flex-start',
+    borderWidth:1
   },
   title: {
     fontSize: 20,
