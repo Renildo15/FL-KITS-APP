@@ -5,18 +5,20 @@ import SearchInput from '@/components/search/search-input';
 import Filter from '@/components/search/filter';
 import ClubsList from '@/components/home/clubs-list';
 import { useState } from 'react';
+import RadioButton from '@/components/radio-button';
 
 export default function Search() {
   const [term, setTerm] = useState("")
+  const [option, setOption] = useState("Tudo")
   return (
     <View style={styles.container}>
-      <View style={{ width: "100%", padding: 10, flex: 1 }}>
+      <View style={{ width: "100%", padding: 10, flex: 1, alignItems:"center" }}>
         <SearchInput 
           searchTerm={term}
           setSearchTerm={setTerm}
         />
-        <Filter />
-        <ClubsList searchTerm={term} />
+        <RadioButton list={["FCM","FCH", "FCR","Tudo"]} option={option} setOption={setOption}/>
+        <ClubsList searchTerm={term} option={option} />
       </View>
     </View>
   );
@@ -26,7 +28,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    borderWidth:1
   },
   title: {
     fontSize: 20,

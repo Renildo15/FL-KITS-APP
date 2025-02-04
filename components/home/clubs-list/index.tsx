@@ -6,16 +6,17 @@ import { useState } from "react";
 
 
 interface IClubListProps{
-    searchTerm?: string
+    searchTerm?: string;
+    option?: string;
 }
 
-export default function ClubsList({searchTerm}:IClubListProps) {
+export default function ClubsList({searchTerm, option}:IClubListProps) {
     const {
         result,
         isError,
         isLoading,
         refetch
-    } = useClubs(searchTerm ?? undefined);
+    } = useClubs(searchTerm ?? undefined, option ?? undefined);
 
     const [refreshing, setRefreshing] = useState(false);
 

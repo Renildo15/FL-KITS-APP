@@ -9,7 +9,7 @@ interface IRadioButtonProps {
 
 export default function RadioButton({option, setOption, list}: IRadioButtonProps) {
     return(
-        <View style={{width:"100%", paddingVertical:10}}>
+        <View style={{width:"100%", paddingVertical:10, alignItems:"center"}}>
             <View style={styles.wrapper}>
                 { list.map(type => (
                     <View key={type} style={styles.type}>
