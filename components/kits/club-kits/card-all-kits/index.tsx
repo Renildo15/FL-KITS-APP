@@ -1,7 +1,7 @@
 import Emblem from "@/components/emblem";
 import { Text, View } from "@/components/Themed";
 import Checkbox from 'expo-checkbox';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, TouchableOpacity } from "react-native";
 import { styles } from "../styles";
 import { useKitCurrent } from "@/hooks/useKitCurrent";
@@ -21,9 +21,13 @@ interface ICardAllKitsProps {
 }
 
 export default function CardAllKits(props: ICardAllKitsProps) {
-    const [isChecked, setChecked] = useState(props.kit_current);
+    const [isChecked, setChecked] = useState<boolean>();
     const { refetch } = useClubs();
     const { refetchRecentClubs } = useRecentsClubs();
+
+    useEffect(() => {
+        setChecked(props.kit_current)
+    })
 
     const handleCurrentKit = async () => {
     
