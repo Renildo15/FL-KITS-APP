@@ -9,7 +9,7 @@ import RadioButton from "@/components/radio-button";
 import { Alert, ScrollView } from "react-native";
 import { IClubErrors } from "@/types/club-errors";
 import { addClub } from "@/hooks/useAddClub";
-import { UseClubs } from "@/hooks/useClubs";
+import { useClubs } from "@/hooks/useClubs";
 import { useRecentsClubs } from "@/hooks/useRecentsClubs";
 import { federations } from "@/utils";
 
@@ -21,7 +21,7 @@ export default function AddClub() {
 
     const [errors, setErrors] = useState<IClubErrors>({})
 
-    const { refetch } = UseClubs();
+    const { refetch } = useClubs();
     const { refetchRecentClubs } = useRecentsClubs();
 
     const pickImage = async () => {

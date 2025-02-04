@@ -3,7 +3,7 @@ import axios from "axios";
 
 export async function AddKit(newKit: FormData) {
     interface IResponse {
-    message: string;
+        message: string;
     }
 
     try {

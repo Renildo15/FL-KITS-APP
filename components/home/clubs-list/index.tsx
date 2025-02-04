@@ -1,7 +1,7 @@
 import { FlatList, RefreshControl } from "react-native";
 import CardNormal from "../card-normal";
 import { Text, View } from "@/components/Themed";
-import { UseClubs } from "@/hooks/useClubs";
+import { useClubs } from "@/hooks/useClubs";
 import { useState } from "react";
 
 export default function ClubsList() {
@@ -10,7 +10,7 @@ export default function ClubsList() {
         isError,
         isLoading,
         refetch
-    } = UseClubs();
+    } = useClubs();
 
     const [refreshing, setRefreshing] = useState(false);
 

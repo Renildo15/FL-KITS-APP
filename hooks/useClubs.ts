@@ -2,7 +2,7 @@ import { Result } from "@/types/clubs";
 import useSWR from "swr";
 
 
-export function UseClubs() {
+export function useClubs() {
     const { data, error, isLoading, isValidating, mutate} = useSWR<Result>("/api/club/list/");
 
     return {

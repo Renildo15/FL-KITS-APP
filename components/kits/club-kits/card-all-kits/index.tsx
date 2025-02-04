@@ -2,20 +2,43 @@ import Emblem from "@/components/emblem";
 import { Text, View } from "@/components/Themed";
 import Checkbox from 'expo-checkbox';
 import { useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { Alert, TouchableOpacity } from "react-native";
 import { styles } from "../styles";
+import { useKitCurrent } from "@/hooks/useKitCurrent";
+import { useClubs } from "@/hooks/useClubs";
+import { useRecentsClubs } from "@/hooks/useRecentsClubs";
 
 interface ICardAllKitsProps {
-    home_kit: string
-    away_kit: string
-    goalkeeper_home_kit: string
-    goalkeeper_away_kit: string,
-    kit_version: string,
-    kit_type: string
+    id: string;
+    home_kit: string;
+    away_kit: string;
+    goalkeeper_home_kit: string;
+    goalkeeper_away_kit: string;
+    kit_version: string;
+    kit_type: string;
+    kit_current: boolean;
+    refetch: () => void;
 }
 
 export default function CardAllKits(props: ICardAllKitsProps) {
-    const [isChecked, setChecked] = useState(false);
+    const [isChecked, setChecked] = useState(props.kit_current);
+    const { refetch } = useClubs();
+    const { refetchRecentClubs } = useRecentsClubs();
+
+    const handleCurrentKit = async () => {
+    
+        try {
+            await useKitCurrent(props.id)
+            refetch();
+            refetchRecentClubs();
+            props.refetch()
+            setChecked(true)
+        } catch (error) {
+            console.error(error);
+            Alert.alert("Erro", "Ocorreu um erro ao tentar alterar kit atual.");
+        }
+
+    }
 
     return(
         <View>
@@ -24,7 +47,7 @@ export default function CardAllKits(props: ICardAllKitsProps) {
                 <View style={styles.badge}>
                     <Text style={{fontWeight:"bold"}}>{props.kit_type}</Text>
                 </View>
-                <Checkbox  style={{margin:8}} value={isChecked} onValueChange={setChecked} />
+                <Checkbox  style={{margin:8}} value={isChecked} onValueChange={handleCurrentKit} />
             </View>
             <TouchableOpacity
                 style={{flexDirection:"row", backgroundColor:"gray"}}

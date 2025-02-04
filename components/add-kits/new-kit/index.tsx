@@ -10,7 +10,7 @@ import { kTypes } from "@/utils";
 import Checkbox from "expo-checkbox";
 import { IKitErrors } from "@/types/kit-errors";
 import { AddKit } from "@/hooks/useAddKit";
-import { UseClubs } from "@/hooks/useClubs";
+import { useClubs } from "@/hooks/useClubs";
 import { useRecentsClubs } from "@/hooks/useRecentsClubs";
 import { useClubDetail } from "@/hooks/useClub";
 import { FetcherImage } from "@/utils/fetcher-images";
@@ -27,7 +27,7 @@ export default function NewKit({clubID}: INewKitProps) {
     const [kitErrors, setKitErrors] = useState<IKitErrors>({});
 
     const { club } = useClubDetail(clubID, false);
-    const { refetch } = UseClubs();
+    const { refetch } = useClubs();
     const { refetchRecentClubs } = useRecentsClubs();
 
     interface Kit {
