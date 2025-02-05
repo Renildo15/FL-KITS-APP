@@ -6,6 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { styles } from "../styles";
 import { router } from "expo-router";
 import { useClubDetail } from "@/hooks/useClub";
+import ErrorMessage from "@/components/error-message";
 
 interface IClubKitsListProps {
     uuid: string
@@ -19,7 +20,7 @@ export default function ClubKitsList({ uuid }: IClubKitsListProps) {
     }
 
     if (isError) {
-        return <Text style={{ padding: 30, color: "red" }}>Erro ao carregar os kits.</Text>;
+        return <ErrorMessage message="Falha ao carregar os kits. Tente novamente!" />
     }
 
 

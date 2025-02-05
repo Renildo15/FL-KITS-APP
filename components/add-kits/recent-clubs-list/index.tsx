@@ -5,6 +5,7 @@ import { styles } from "../styles";
 import { useRecentsClubs } from "@/hooks/useRecentsClubs";
 import { useState } from "react";
 import NoData from "@/components/no-data";
+import ErrorMessage from "@/components/error-message";
 
 export default function RecentClubsList() {
     const { resultRecentClubs, refetchRecentClubs, isError, isLoading} = useRecentsClubs();
@@ -21,7 +22,7 @@ export default function RecentClubsList() {
         <View style={styles.container}>
             <Text style={styles.title}>Clubes recentes</Text>
             { isError ? (
-                <Text>Error</Text>
+                <ErrorMessage message="Falha ao carregar os clubes. Tente novamente!" />
             ): isLoading ? (
                 <Text>Carregando</Text>
             ) : (

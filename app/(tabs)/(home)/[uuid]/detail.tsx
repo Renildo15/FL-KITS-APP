@@ -6,6 +6,7 @@ import { ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useClubDetail } from "@/hooks/useClub";
 import { Text } from "@/components/Themed";
+import ErrorMessage from "@/components/error-message";
 
 export default function Detail() {
     const { uuid } = useLocalSearchParams();
@@ -21,7 +22,7 @@ export default function Detail() {
             contentContainerStyle={styles.contentContainer}
         >
              { isError ? (
-                <Text>Erro</Text>
+                <ErrorMessage message="Falha ao carregar clube. Tente novamente!" />
                 ) : isLoading ? (
                 <Text>Carregando</Text>
                 ) : (

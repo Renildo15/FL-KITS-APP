@@ -4,6 +4,7 @@ import { Text, View } from "@/components/Themed";
 import { useClubs } from "@/hooks/useClubs";
 import { useState } from "react";
 import NoData from "@/components/no-data";
+import ErrorMessage from "@/components/error-message";
 
 
 interface IClubListProps{
@@ -30,7 +31,7 @@ export default function ClubsList({searchTerm, option}:IClubListProps) {
     return (
         <View style={{flex: 1}}>
             { isError ? (
-                <Text>{isError.message}</Text>
+                <ErrorMessage message="Falha ao carregar os clubes. Tente novamente!" />
             ) : isLoading ? (
                 <Text>Carregando</Text>
             ) : (
