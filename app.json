@@ -4,7 +4,7 @@
     "slug": "fl-kits-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/fl-kits.png",
+    "icon": "./assets/images/fl-kits-512x512.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -20,7 +20,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/fl-kits.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.habby_valle_15.flkitsapp"
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +37,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "975d4c89-db17-4630-b9a0-d5c50ffc2409"
+      }
     }
   }
 }
