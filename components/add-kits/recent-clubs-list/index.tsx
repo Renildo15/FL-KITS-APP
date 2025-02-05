@@ -6,6 +6,7 @@ import { useRecentsClubs } from "@/hooks/useRecentsClubs";
 import { useState } from "react";
 import NoData from "@/components/no-data";
 import ErrorMessage from "@/components/error-message";
+import LoadingIndicator from "@/components/loading";
 
 export default function RecentClubsList() {
     const { resultRecentClubs, refetchRecentClubs, isError, isLoading} = useRecentsClubs();
@@ -24,7 +25,7 @@ export default function RecentClubsList() {
             { isError ? (
                 <ErrorMessage message="Falha ao carregar os clubes. Tente novamente!" />
             ): isLoading ? (
-                <Text>Carregando</Text>
+                <LoadingIndicator />
             ) : (
                 <FlatList
                     style={{width: "100%"}}

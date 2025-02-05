@@ -5,8 +5,8 @@ import KitsList from "@/components/kits/kits-list";
 import { ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useClubDetail } from "@/hooks/useClub";
-import { Text } from "@/components/Themed";
 import ErrorMessage from "@/components/error-message";
+import LoadingIndicator from "@/components/loading";
 
 export default function Detail() {
     const { uuid } = useLocalSearchParams();
@@ -24,7 +24,7 @@ export default function Detail() {
              { isError ? (
                 <ErrorMessage message="Falha ao carregar clube. Tente novamente!" />
                 ) : isLoading ? (
-                <Text>Carregando</Text>
+                <LoadingIndicator />
                 ) : (
                 <CardMain isClickable={false} club={club}/>
                 )}

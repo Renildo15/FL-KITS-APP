@@ -6,6 +6,7 @@ import { styles } from './styles';
 import { useRecentsClubs } from '@/hooks/useRecentsClubs';
 import NoData from '@/components/no-data';
 import ErrorMessage from '@/components/error-message';
+import LoadingIndicator from '@/components/loading';
 
 export default function Home() {
 
@@ -18,7 +19,7 @@ export default function Home() {
       {isError ? (
         <ErrorMessage message="Falha ao carregar os clubes. Tente novamente!" />
       ) : isLoading ? (
-        <Text>Carregando</Text>
+        <LoadingIndicator />
       ) : firstClub ? (
         <>
           <CardMain isClickable={true} club={firstClub} />

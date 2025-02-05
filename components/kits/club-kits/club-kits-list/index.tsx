@@ -7,6 +7,7 @@ import { styles } from "../styles";
 import { router } from "expo-router";
 import { useClubDetail } from "@/hooks/useClub";
 import ErrorMessage from "@/components/error-message";
+import LoadingIndicator from "@/components/loading";
 
 interface IClubKitsListProps {
     uuid: string
@@ -16,7 +17,7 @@ export default function ClubKitsList({ uuid }: IClubKitsListProps) {
     const { club, isError, isLoading, refetch } = useClubDetail(uuid, true)
 
     if (isLoading) {
-        return <Text style={{ padding: 30 }}>Carregando kits...</Text>;
+        return <LoadingIndicator />
     }
 
     if (isError) {

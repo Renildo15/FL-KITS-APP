@@ -1,10 +1,11 @@
 import { FlatList, RefreshControl } from "react-native";
 import CardNormal from "../card-normal";
-import { Text, View } from "@/components/Themed";
+import { View } from "@/components/Themed";
 import { useClubs } from "@/hooks/useClubs";
 import { useState } from "react";
 import NoData from "@/components/no-data";
 import ErrorMessage from "@/components/error-message";
+import LoadingIndicator from "@/components/loading";
 
 
 interface IClubListProps{
@@ -33,7 +34,7 @@ export default function ClubsList({searchTerm, option}:IClubListProps) {
             { isError ? (
                 <ErrorMessage message="Falha ao carregar os clubes. Tente novamente!" />
             ) : isLoading ? (
-                <Text>Carregando</Text>
+                <LoadingIndicator />
             ) : (
                 <FlatList
                     data={result.results}
