@@ -47,7 +47,10 @@ export default function ClubKitsList({ uuid }: IClubKitsListProps) {
                         />
                     ))
                 ) : (
-                    <Text style={{padding:30}}>Nenhum kit disponível</Text>
+                    <View style={{alignItems:"center"}}>
+                        <FontAwesome name="exclamation-triangle" size={50} color={"#999"}/>
+                        <Text style={{marginTop: 10, fontSize: 18, color: "#666",fontWeight: "bold"}}>Nenhum kit disponível</Text>
+                    </View>
                 )}
             </View>
            <View style={{width:"100%", padding:10}}>

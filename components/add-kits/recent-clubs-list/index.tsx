@@ -4,6 +4,7 @@ import CardClub from "../card-club";
 import { styles } from "../styles";
 import { useRecentsClubs } from "@/hooks/useRecentsClubs";
 import { useState } from "react";
+import NoData from "@/components/no-data";
 
 export default function RecentClubsList() {
     const { resultRecentClubs, refetchRecentClubs, isError, isLoading} = useRecentsClubs();
@@ -38,6 +39,7 @@ export default function RecentClubsList() {
                     )}
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={() => <View style={styles.separator} />}
+                    ListEmptyComponent={<NoData message="Nenhum clube encontrado"/>}
                     refreshControl={
                         <RefreshControl
                             refreshing={refreshing}

@@ -3,6 +3,7 @@ import CardNormal from "../card-normal";
 import { Text, View } from "@/components/Themed";
 import { useClubs } from "@/hooks/useClubs";
 import { useState } from "react";
+import NoData from "@/components/no-data";
 
 
 interface IClubListProps{
@@ -39,6 +40,7 @@ export default function ClubsList({searchTerm, option}:IClubListProps) {
                     keyExtractor={item => item.id}
                     contentContainerStyle={{ paddingBottom: 70 }}
                     showsVerticalScrollIndicator={false}
+                    ListEmptyComponent={<NoData message="Nenhum clube encontrado"/>}
                     refreshControl={
                         <RefreshControl
                           refreshing={refreshing}

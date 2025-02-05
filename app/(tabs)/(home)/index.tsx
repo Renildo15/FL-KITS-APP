@@ -1,8 +1,10 @@
+import React from 'react';
 import { Text, View } from '@/components/Themed';
 import CardMain from '@/components/home/card-main';
 import ClubsList from '@/components/home/clubs-list';
 import { styles } from './styles';
 import { useRecentsClubs } from '@/hooks/useRecentsClubs';
+import NoData from '@/components/no-data';
 
 export default function Home() {
 
@@ -12,14 +14,18 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      { isError ? (
+      {isError ? (
         <Text>Erro</Text>
       ) : isLoading ? (
         <Text>Carregando</Text>
+      ) : firstClub ? (
+        <>
+          <CardMain isClickable={true} club={firstClub} />
+          <ClubsList />
+        </>
       ) : (
-        <CardMain isClickable={true} club={firstClub}/>
+        <NoData message="Nenhum clube encontrado" />
       )}
-      <ClubsList/>
     </View>
   );
 }

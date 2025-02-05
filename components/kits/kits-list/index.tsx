@@ -4,6 +4,7 @@ import EmblemKit from "../emblem-kit";
 import { styles } from "../styles";
 import CardKit from "../card-kit";
 import { Club } from "@/types/clubs";
+import NoData from "@/components/no-data";
 
 interface IKitsListProps {
     club: Club | null
@@ -28,7 +29,7 @@ export default function KitsList({club}: IKitsListProps) {
                     ) : null
                 ))
             ) : (
-                <Text style={{ padding: 30 }}>Nenhum kit disponível</Text>
+                <NoData message="Nenhum kit disponível"/>
             )}
         </View>
     )
